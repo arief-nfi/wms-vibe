@@ -1,5 +1,5 @@
 
-# React Admin
+# Web Admin
 
 A comprehensive admin dashboard built with React, TypeScript, Vite, and Drizzle ORM. This project is designed to serve as a base foundation app for building larger applications. It provides a modular, scalable, and modern starting point for managing users, roles, and permissions, with authentication and authorization features, multitenancy support, and a clean UI.
 
