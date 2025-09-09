@@ -5,7 +5,12 @@ import { permission, role, rolePermission, tenant, user, userRole, userTenant } 
 async function seed() {
 
   console.log("Clearing table")
-  await db.execute(`TRUNCATE TABLE "sys_user_tenant", "sys_user_role", "sys_role_permission", "sys_permission", "sys_role", "sys_user", "sys_option", "sys_tenant"  CASCADE`);
+  // Only clear tables if they exist
+  try {
+    await db.execute(`TRUNCATE TABLE "sys_user_tenant", "sys_user_role", "sys_role_permission", "sys_permission", "sys_role", "sys_user", "sys_option", "sys_tenant"  CASCADE`);
+  } catch (e) {
+    console.log("Tables don't exist yet, continuing with fresh seed...");
+  }
 
   console.log("Seeding tenant");
   const sysTenantId = crypto.randomUUID();
@@ -74,6 +79,24 @@ async function seed() {
     { id: crypto.randomUUID(), code: "system.option.edit", name: "Edit Option", description: "Permission to edit option", tenantId: sysTenantId },
     { id: crypto.randomUUID(), code: "system.option.delete", name: "Delete Option", description: "Permission to delete option", tenantId: sysTenantId },
 
+    // master partner permissions - system tenant
+    { id: crypto.randomUUID(), code: "master.partner.view", name: "View Partner", description: "Permission to view partners", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.partner.add", name: "Create Partner", description: "Permission to add partners", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.partner.edit", name: "Edit Partner", description: "Permission to edit partners", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.partner.delete", name: "Delete Partner", description: "Permission to delete partners", tenantId: sysTenantId },
+
+    // master integration inbound permissions - system tenant
+    { id: crypto.randomUUID(), code: "master.integrationInbound.view", name: "View Integration Inbound", description: "Permission to view integration inbound API keys", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.integrationInbound.add", name: "Create Integration Inbound", description: "Permission to add integration inbound API keys", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.integrationInbound.edit", name: "Edit Integration Inbound", description: "Permission to edit integration inbound API keys", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.integrationInbound.delete", name: "Delete Integration Inbound", description: "Permission to delete integration inbound API keys", tenantId: sysTenantId },
+
+    // master webhook permissions - system tenant
+    { id: crypto.randomUUID(), code: "master.webhook.view", name: "View Webhooks", description: "Permission to view webhook configurations", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.webhook.create", name: "Create Webhooks", description: "Permission to create webhook endpoints", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.webhook.edit", name: "Edit Webhooks", description: "Permission to edit webhook configurations", tenantId: sysTenantId },
+    { id: crypto.randomUUID(), code: "master.webhook.delete", name: "Delete Webhooks", description: "Permission to delete webhook endpoints", tenantId: sysTenantId },
+
     
 
     // public tenant permissions
@@ -101,6 +124,23 @@ async function seed() {
     { id: crypto.randomUUID(), code: "system.option.edit", name: "Edit Option", description: "Permission to edit option", tenantId: pubTenantId },
     { id: crypto.randomUUID(), code: "system.option.delete", name: "Delete Option", description: "Permission to delete option", tenantId: pubTenantId },
 
+    // master partner permissions - public tenant
+    { id: crypto.randomUUID(), code: "master.partner.view", name: "View Partner", description: "Permission to view partners", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.partner.add", name: "Create Partner", description: "Permission to add partners", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.partner.edit", name: "Edit Partner", description: "Permission to edit partners", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.partner.delete", name: "Delete Partner", description: "Permission to delete partners", tenantId: pubTenantId },
+
+    // master integration inbound permissions - public tenant
+    { id: crypto.randomUUID(), code: "master.integrationInbound.view", name: "View Integration Inbound", description: "Permission to view integration inbound API keys", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.integrationInbound.add", name: "Create Integration Inbound", description: "Permission to add integration inbound API keys", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.integrationInbound.edit", name: "Edit Integration Inbound", description: "Permission to edit integration inbound API keys", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.integrationInbound.delete", name: "Delete Integration Inbound", description: "Permission to delete integration inbound API keys", tenantId: pubTenantId },
+
+    // master webhook permissions - public tenant
+    { id: crypto.randomUUID(), code: "master.webhook.view", name: "View Webhooks", description: "Permission to view webhook configurations", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.webhook.create", name: "Create Webhooks", description: "Permission to create webhook endpoints", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.webhook.edit", name: "Edit Webhooks", description: "Permission to edit webhook configurations", tenantId: pubTenantId },
+    { id: crypto.randomUUID(), code: "master.webhook.delete", name: "Delete Webhooks", description: "Permission to delete webhook endpoints", tenantId: pubTenantId },
 
   ]);
 

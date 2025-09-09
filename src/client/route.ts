@@ -40,6 +40,24 @@ import CardShowcase from "./pages/console/showcase/CardShowcase";
 import TabShowcase from "./pages/console/showcase/TabShowcase";
 import FormShowcase from "./pages/console/showcase/FormShowcase";
 import RegisterTenant from "./pages/auth/RegisterTenant";
+import Partner from "./pages/console/master/partner/Partner";
+import PartnerAdd from "./pages/console/master/partner/PartnerAdd";
+import PartnerView from "./pages/console/master/partner/PartnerView";
+import PartnerEdit from "./pages/console/master/partner/PartnerEdit";
+import IntegrationInbound from "./pages/console/master/integration-inbound/IntegrationInboundList";
+import IntegrationInboundAdd from "./pages/console/master/integration-inbound/IntegrationInboundAdd";
+import IntegrationInboundDetail from "./pages/console/master/integration-inbound/IntegrationInboundDetail";
+import IntegrationInboundEdit from "./pages/console/master/integration-inbound/IntegrationInboundEdit";
+import WebhookEventList from "./pages/console/master/webhook-events/WebhookEventList";
+import WebhookEventAdd from "./pages/console/master/webhook-events/WebhookEventAdd";
+import WebhookEventDetail from "./pages/console/master/webhook-events/WebhookEventDetail";
+import WebhookEventEdit from "./pages/console/master/webhook-events/WebhookEventEdit";
+
+// Integration Outbound (Webhook) imports
+import WebhookList from "./pages/console/master/integration-outbound/WebhookList";
+import WebhookAdd from "./pages/console/master/integration-outbound/WebhookAdd";
+import WebhookDetail from "./pages/console/master/integration-outbound/WebhookDetail";
+import WebhookEdit from "./pages/console/master/integration-outbound/WebhookEdit";
 
 export const router = createBrowserRouter([
   {
@@ -88,6 +106,61 @@ export const router = createBrowserRouter([
                   { path: "add", Component: DepartmentAdd },
                   { path: ":id", Component: DepartmentView },
                   { path: ":id/edit", Component: DepartmentEdit },
+                  { path: ":id/delete"}
+                ]
+              },
+            ]
+          },
+          { 
+            path: "int", 
+            children: [
+              { 
+                path: "integration-inbound", 
+                children: [
+                  { index: true, Component: IntegrationInbound },
+                  { path: "add", Component: IntegrationInboundAdd },
+                  { path: ":id", Component: IntegrationInboundDetail },
+                  { path: ":id/edit", Component: IntegrationInboundEdit },
+                  { path: ":id/delete"}
+                ]
+              },
+              { 
+                path: "integration-outbound", 
+                children: [
+                  { 
+                    path: "webhook", 
+                    children: [
+                      { index: true, Component: WebhookList },
+                      { path: "add", Component: WebhookAdd },
+                      { path: ":id", Component: WebhookDetail },
+                      { path: "edit/:id", Component: WebhookEdit },
+                      { path: ":id/delete"}
+                    ]
+                  }
+                ]
+              },
+            ]
+          },
+          { 
+            path: "master", 
+            children: [
+              { 
+                path: "partner", 
+                children: [
+                  { index: true, Component: Partner },
+                  { path: "add", Component: PartnerAdd },
+                  { path: ":id", Component: PartnerView },
+                  { path: ":id/edit", Component: PartnerEdit },
+                  { path: ":id/delete"}
+                ]
+              },
+              { 
+                path: "webhook-events", 
+                children: [
+                  { index: true, Component: WebhookEventList },
+                  { path: "add", Component: WebhookEventAdd },
+                  { path: ":id", Component: WebhookEventDetail },
+                  { path: ":id/edit", Component: WebhookEventEdit },
                   { path: ":id/delete"}
                 ]
               },

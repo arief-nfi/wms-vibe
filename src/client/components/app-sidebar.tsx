@@ -11,6 +11,7 @@ import {
   Puzzle,
   Settings2,
   SquareTerminal,
+  Users,
 } from "lucide-react"
 
 import { NavMain } from "@client/components/nav-main"
@@ -87,6 +88,54 @@ const data = {
           id: "department",
           title: "Department",
           url: "/console/demo/department",
+        },
+      ],
+    },
+    {
+      id: "int",
+      title: "Integration",
+      url: "/console/int",
+      icon: Users,
+      roles: "SYSADMIN",
+      permissions: ["master.integrationInbound.view", "master.webhook.view"],
+      items: [
+        {
+          id: "integration-inbound",
+          title: "Integration Inbound",
+          url: "/console/int/integration-inbound",
+          roles: "SYSADMIN",
+          permissions: "master.integrationInbound.view",
+        },
+        {
+          id: "integration-outbound",
+          title: "Integration Outbound",
+          url: "/console/int/integration-outbound/webhook",
+          roles: "SYSADMIN",
+          permissions: "master.webhook.view",
+        },        
+      ],
+    },
+    {
+      id: "master",
+      title: "Master",
+      url: "/console/master",
+      icon: Users,
+      roles: "SYSADMIN",
+      permissions: ["master.partner.view", "webhook.event.view"],
+      items: [
+        {
+          id: "partner",
+          title: "Partner",
+          url: "/console/master/partner",
+          roles: "SYSADMIN",
+          permissions: "master.partner.view",
+        },
+        {
+          id: "webhook-events",
+          title: "Webhook Events",
+          url: "/console/master/webhook-events",
+          roles: "SYSADMIN",
+          permissions: "webhook.event.view",
         },
       ],
     },
