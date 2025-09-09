@@ -19,7 +19,7 @@ const IntegrationInboundEdit = () => {
     createBreadcrumbItems([
       {
         label: "Integration Inbound",
-        onClick: () => navigate("/console/master/integration-inbound"),
+        onClick: () => navigate("/console/int/integration-inbound"),
       },
       {
         label: integrationInbound ? `Edit ${integrationInbound.partnerName || 'API Key'}` : "Edit API Key",
@@ -31,7 +31,7 @@ const IntegrationInboundEdit = () => {
     const loadIntegrationInbound = async () => {
       if (!id) {
         toast.error('Integration inbound ID is required');
-        navigate('/console/master/integration-inbound');
+        navigate('/console/int/integration-inbound');
         return;
       }
 
@@ -41,7 +41,7 @@ const IntegrationInboundEdit = () => {
         setIntegrationInbound(response.data);
       } catch (error: any) {
         toast.error(error.response?.data?.message || 'Failed to load integration inbound API key');
-        navigate('/console/master/integration-inbound');
+        navigate('/console/int/integration-inbound');
       } finally {
         setLoading(false);
       }
@@ -59,7 +59,7 @@ const IntegrationInboundEdit = () => {
       setIsSubmitting(true);
       await integrationInboundApi.updateIntegrationInbound(id, data);
       toast.success('Integration inbound API key updated successfully');
-      navigate('/console/master/integration-inbound');
+      navigate('/console/int/integration-inbound');
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Failed to update integration inbound API key');
       throw error;
@@ -69,7 +69,7 @@ const IntegrationInboundEdit = () => {
   };
 
   const handleCancel = () => {
-    navigate('/console/master/integration-inbound');
+    navigate('/console/int/integration-inbound');
   };
 
   if (!isAuthorized(["SYSADMIN"], ['master.integrationInbound.edit'])) {

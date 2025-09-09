@@ -23,7 +23,7 @@ const WebhookEdit = () => {
     createBreadcrumbItems([
       {
         label: "Integration Outbound - Webhooks",
-        href: "/console/master/integration-outbound/webhook",
+        href: "/console/int/integration-outbound/webhook",
       },
       {
         label: webhook ? `Edit ${webhook.eventType}` : "Edit Webhook",
@@ -35,7 +35,7 @@ const WebhookEdit = () => {
   useEffect(() => {
     const loadData = async () => {
       if (!id) {
-        navigate('/console/master/integration-outbound/webhook');
+        navigate('/console/int/integration-outbound/webhook');
         return;
       }
 
@@ -52,7 +52,7 @@ const WebhookEdit = () => {
         setPartners(partnersResponse.data);
       } catch (error: any) {
         toast.error(error.response?.data?.message || 'Failed to load webhook details');
-        navigate('/console/master/integration-outbound/webhook');
+        navigate('/console/int/integration-outbound/webhook');
       } finally {
         setLoading(false);
       }
@@ -68,7 +68,7 @@ const WebhookEdit = () => {
       setIsLoading(true);
       await webhookApi.update(id, { ...data, id });
       toast.success('Webhook updated successfully');
-      navigate('/console/master/integration-outbound/webhook');
+      navigate('/console/int/integration-outbound/webhook');
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Failed to update webhook');
     } finally {
@@ -77,7 +77,7 @@ const WebhookEdit = () => {
   };
 
   const handleCancel = () => {
-    navigate('/console/master/integration-outbound/webhook');
+    navigate('/console/int/integration-outbound/webhook');
   };
 
   if (!isAuthorized(["SYSADMIN"], ['master.webhook.edit'])) {
@@ -116,7 +116,7 @@ const WebhookEdit = () => {
       <Breadcrumbs items={breadcrumbs} />
       
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Edit Webhook</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Edit Webhook</h1>
         <p className="text-muted-foreground">
           Update webhook endpoint configuration and event monitoring settings
         </p>

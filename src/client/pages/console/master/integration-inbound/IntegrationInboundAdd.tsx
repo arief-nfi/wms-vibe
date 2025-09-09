@@ -16,7 +16,7 @@ const IntegrationInboundAdd = () => {
     createBreadcrumbItems([
       {
         label: "Integration Inbound",
-        onClick: () => navigate("/console/master/integration-inbound"),
+        onClick: () => navigate("/console/int/integration-inbound"),
       },
       {
         label: "Add API Key",
@@ -29,7 +29,7 @@ const IntegrationInboundAdd = () => {
       setIsLoading(true);
       await integrationInboundApi.createIntegrationInbound(data);
       toast.success('Integration inbound API key created successfully');
-      navigate('/console/master/integration-inbound');
+      navigate('/console/int/integration-inbound');
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Failed to create integration inbound API key');
       throw error;
@@ -39,7 +39,7 @@ const IntegrationInboundAdd = () => {
   };
 
   const handleCancel = () => {
-    navigate('/console/master/integration-inbound');
+    navigate('/console/int/integration-inbound');
   };
 
   if (!isAuthorized(["SYSADMIN"], ['master.integrationInbound.add'])) {

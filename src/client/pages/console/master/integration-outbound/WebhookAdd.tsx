@@ -20,7 +20,7 @@ const WebhookAdd = () => {
     createBreadcrumbItems([
       {
         label: "Integration Outbound - Webhooks",
-        href: "/console/master/integration-outbound/webhook",
+        href: "/console/int/integration-outbound/webhook",
       },
       {
         label: "Add Webhook",
@@ -48,7 +48,7 @@ const WebhookAdd = () => {
       setIsLoading(true);
       await webhookApi.create(data);
       toast.success('Webhook created successfully');
-      navigate('/console/master/integration-outbound/webhook');
+      navigate('/console/int/integration-outbound/webhook');
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Failed to create webhook');
     } finally {
@@ -57,7 +57,7 @@ const WebhookAdd = () => {
   };
 
   const handleCancel = () => {
-    navigate('/console/master/integration-outbound/webhook');
+    navigate('/console/int/integration-outbound/webhook');
   };
 
   if (!isAuthorized(["SYSADMIN"], ['master.webhook.create'])) {
@@ -73,7 +73,7 @@ const WebhookAdd = () => {
       <Breadcrumbs items={breadcrumbs} />
       
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Add New Webhook</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Add New Webhook</h1>
         <p className="text-muted-foreground">
           Create a new webhook endpoint to receive event notifications
         </p>

@@ -133,11 +133,11 @@ const IntegrationInboundList = () => {
       
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold">Integration Inbound API Keys</h1>
+          <h1 className="text-2xl font-bold">Integration Inbound - API Keys</h1>
           <p className="text-gray-600">Manage API keys for partner integrations</p>
         </div>
         {isAuthorized(["SYSADMIN"], ['master.integrationInbound.add']) && (
-          <Button onClick={() => navigate('/console/master/integration-inbound/add')}>
+          <Button onClick={() => navigate('/console/int/integration-inbound/add')}>
             <Plus className="w-4 h-4 mr-2" />
             Add API Key
           </Button>
@@ -233,7 +233,7 @@ const IntegrationInboundList = () => {
                             <Button
                               variant="ghost"
                               size="sm"
-                              onClick={() => navigate(`/console/master/integration-inbound/${item.id}`)}
+                              onClick={() => navigate(`/console/int/integration-inbound/${item.id}`)}
                             >
                               <Eye className="w-4 h-4" />
                             </Button>
@@ -242,7 +242,7 @@ const IntegrationInboundList = () => {
                             <Button
                               variant="ghost"
                               size="sm"
-                              onClick={() => navigate(`/console/master/integration-inbound/${item.id}/edit`)}
+                              onClick={() => navigate(`/console/int/integration-inbound/${item.id}/edit`)}
                             >
                               <Edit className="w-4 h-4" />
                             </Button>

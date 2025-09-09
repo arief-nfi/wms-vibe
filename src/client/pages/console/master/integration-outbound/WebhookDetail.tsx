@@ -31,7 +31,7 @@ const WebhookDetail = () => {
     createBreadcrumbItems([
       {
         label: "Integration Outbound - Webhooks",
-        href: "/console/master/integration-outbound/webhook",
+        href: "/console/int/integration-outbound/webhook",
       },
       {
         label: webhook ? webhook.eventType : "Webhook Details",
@@ -51,7 +51,7 @@ const WebhookDetail = () => {
         toast.error(
           error.response?.data?.message || "Failed to load webhook details",
         );
-        navigate("/console/master/integration-outbound/webhook");
+        navigate("/console/int/integration-outbound/webhook");
       } finally {
         setLoading(false);
       }
@@ -92,7 +92,7 @@ const WebhookDetail = () => {
 
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Webhook Details</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Webhook Details</h1>
           <p className="text-muted-foreground">
             View webhook configuration and event monitoring details
           </p>
@@ -101,7 +101,7 @@ const WebhookDetail = () => {
           <Button
             variant="outline"
             onClick={() =>
-              navigate("/console/master/integration-outbound/webhook")
+              navigate("/console/int/integration-outbound/webhook")
             }
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -111,7 +111,7 @@ const WebhookDetail = () => {
             <Button
               onClick={() =>
                 navigate(
-                  `/console/master/integration-outbound/webhook/edit/${webhook.id}`,
+                  `/console/int/integration-outbound/webhook/edit/${webhook.id}`,
                 )
               }
             >

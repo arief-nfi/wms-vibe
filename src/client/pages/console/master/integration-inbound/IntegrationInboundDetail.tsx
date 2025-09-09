@@ -33,7 +33,7 @@ const IntegrationInboundDetail = () => {
     createBreadcrumbItems([
       {
         label: "Integration Inbound",
-        onClick: () => navigate("/console/master/integration-inbound"),
+        onClick: () => navigate("/console/int/integration-inbound"),
       },
       {
         label: integrationInbound
@@ -47,7 +47,7 @@ const IntegrationInboundDetail = () => {
     const loadIntegrationInbound = async () => {
       if (!id) {
         toast.error("Integration inbound ID is required");
-        navigate("/console/master/integration-inbound");
+        navigate("/console/int/integration-inbound");
         return;
       }
 
@@ -60,7 +60,7 @@ const IntegrationInboundDetail = () => {
           error.response?.data?.message ||
             "Failed to load integration inbound API key",
         );
-        navigate("/console/master/integration-inbound");
+        navigate("/console/int/integration-inbound");
       } finally {
         setLoading(false);
       }
@@ -86,7 +86,7 @@ const IntegrationInboundDetail = () => {
       setDeleting(true);
       await integrationInboundApi.deleteIntegrationInbound(id);
       toast.success("Integration inbound API key deleted successfully");
-      navigate("/console/master/integration-inbound");
+      navigate("/console/int/integration-inbound");
     } catch (error: any) {
       toast.error(
         error.response?.data?.message ||
@@ -172,7 +172,7 @@ const IntegrationInboundDetail = () => {
         <div className="flex space-x-2">
           <Button
             variant="outline"
-            onClick={() => navigate("/console/master/integration-inbound")}
+            onClick={() => navigate("/console/int/integration-inbound")}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to List
@@ -180,7 +180,7 @@ const IntegrationInboundDetail = () => {
           {isAuthorized(["SYSADMIN"], ["master.integrationInbound.edit"]) && (
             <Button
               onClick={() =>
-                navigate(`/console/master/integration-inbound/${id}/edit`)
+                navigate(`/console/int/integration-inbound/${id}/edit`)
               }
             >
               <Edit className="w-4 h-4 mr-2" />

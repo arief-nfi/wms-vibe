@@ -140,13 +140,13 @@ const WebhookList = () => {
       
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Webhooks</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Integration Outbound - Webhooks</h1>
           <p className="text-muted-foreground">
             Manage webhook endpoints for outbound event notifications to partners
           </p>
         </div>
         {isAuthorized(["SYSADMIN"], ['master.webhook.create']) && (
-          <Button onClick={() => navigate('/console/master/integration-outbound/webhook/add')}>
+          <Button onClick={() => navigate('/console/int/integration-outbound/webhook/add')}>
             <Plus className="mr-2 h-4 w-4" />
             Add Webhook
           </Button>
@@ -255,7 +255,7 @@ const WebhookList = () => {
                           <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() => navigate(`/console/master/integration-outbound/webhook/${webhook.id}`)}
+                            onClick={() => navigate(`/console/int/integration-outbound/webhook/${webhook.id}`)}
                           >
                             <Eye className="h-4 w-4" />
                           </Button>
@@ -263,7 +263,7 @@ const WebhookList = () => {
                             <Button
                               variant="ghost"
                               size="sm"
-                              onClick={() => navigate(`/console/master/integration-outbound/webhook/edit/${webhook.id}`)}
+                              onClick={() => navigate(`/console/int/integration-outbound/webhook/edit/${webhook.id}`)}
                             >
                               <Edit className="h-4 w-4" />
                             </Button>
